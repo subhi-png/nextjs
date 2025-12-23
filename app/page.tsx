@@ -3,39 +3,39 @@ import Image from 'next/image';
 export default function Home() {
   const news = [
     {
-      title: "Driverless Robotaxi в Austin без safety driver",
-      desc: "Тестирование полностью автономно, флот расширяется. Musk: unsupervised FSD solved!",
-      date: "Декабрь 2025",
+      title: "Driverless Robotaxi Testing in Austin",
+      desc: "Fully unsupervised rides expanding fleet. Musk: 'Unsupervised FSD pretty much solved!'",
+      date: "December 2025",
     },
     {
-      title: "FSD v14.2.2 rollout",
-      desc: "Гладкая езда, лучше распознавание препятствий. Работает даже в blackout, где Waymo встал.",
-      date: "23 декабря 2025",
+      title: "FSD v14.2+ Rollout",
+      desc: "Smoother performance, better obstacle recognition. Outperforming competitors in real-world tests.",
+      date: "December 23, 2025",
     },
     {
-      title: "Optimus в тысячах на заводах",
-      desc: "Роботы выполняют задачи, планы на массовые продажи в 2026. Bull case: триллионы $",
-      date: "Декабрь 2025",
+      title: "Optimus in Factories",
+      desc: "Thousands of robots deployed, limited external sales planned for 2026. Trillion-dollar potential.",
+      date: "December 2025",
     },
     {
-      title: "Energy бьёт рекорды",
-      desc: "Deployments >100% YoY, маржи выше авто. Megapack контракты в Европе.",
-      date: "Декабрь 2025",
+      title: "Energy Storage Records",
+      desc: ">100% YoY growth in deployments, margins higher than auto business.",
+      date: "December 2025",
     },
     {
-      title: "Stock near all-time highs",
-      desc: "Аналитики: $500–600 в 2026 за счёт autonomy и robotics.",
-      date: "24 декабря 2025",
+      title: "TSLA Near All-Time Highs",
+      desc: "Stock ~$485–490. Analysts bull targets $500–600+ on autonomy & robotics.",
+      date: "December 24, 2025",
     },
   ];
 
   return (
     <main className="flex min-h-screen flex-col bg-black text-white">
-      {/* Hero */}
+      {/* Hero Section */}
       <div className="relative w-full h-screen">
         <Image
           src="/optimus-hero.jpg"
-          alt="Optimus выходит из Cybertruck"
+          alt="Optimus exiting Cybertruck"
           fill
           className="object-cover brightness-50"
           priority
@@ -53,7 +53,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Лента новостей */}
+      {/* News Feed */}
       <section className="w-full max-w-6xl mx-auto px-8 py-20">
         <h2 className="text-4xl md:text-6xl font-bold text-center mb-12 text-red-500">
           Latest Bull Catalysts
