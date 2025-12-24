@@ -53,23 +53,21 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TSLA Live Chart – большой iframe */}
-      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
-        <h2 className="mb-10 text-center text-4xl font-bold text-red-500 md:text-6xl">
-          TSLA Live Chart
-        </h2>
-        <div className="w-full rounded-2xl overflow-hidden shadow-2xl" style={{ height: '800px' }}>
-          <iframe
-            src="https://www.tradingview.com/chart/?symbol=NASDAQ:TSLA&theme=Dark"
-            width="100%"
-            height="100%"
-            frameBorder="0"
-            allowTransparency="true"
-            scrolling="no"
-            allowFullScreen
-          ></iframe>
-        </div>
-      </section>
+      {/* TSLA Live Chart – простой iframe */}
+<section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+  <h2 className="mb-10 text-center text-4xl font-bold text-red-500 md:text-6xl">
+    TSLA Live Chart
+  </h2>
+  <div className="w-full rounded-2xl overflow-hidden shadow-2xl" style={{ height: '800px' }}>
+    <iframe
+      src="https://www.tradingview.com/chart/?symbol=NASDAQ:TSLA&theme=Dark&interval=D"
+      width="100%"
+      height="100%"
+      frameBorder="0"
+      allowFullScreen
+    ></iframe>
+  </div>
+</section>
 
       {/* Latest Bull Catalysts */}
       <section className="mx-auto max-w-6xl px-4 pb-32 pt-16 md:px-8">
