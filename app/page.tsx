@@ -1,22 +1,41 @@
 import Image from 'next/image';
-import Script from 'next/script';
 
 export default function Home() {
   const catalysts = [
-    { title: "Driverless Robotaxi Expansion", description: "Fully unsupervised rides scaling – trillion-dollar opportunity unfolding.", date: "December 2025" },
-    { title: "FSD v14.2+ Rollout", description: "Smoother performance, outperforming competitors.", date: "December 23, 2025" },
-    { title: "Optimus Factory Deployment", description: "Thousands of robots active, external sales 2026.", date: "December 2025" },
-    { title: "Energy Storage Records", description: ">100% YoY growth, margins beating auto.", date: "December 2025" },
-    { title: "TSLA Near ATH", description: "Trading ~$485–490, targets $500–600+.", date: "December 24, 2025" },
+    {
+      title: "Driverless Robotaxi Expansion",
+      description: "Fully unsupervised rides scaling in Austin and new cities — trillion-dollar opportunity unlocking.",
+      date: "December 2025",
+    },
+    {
+      title: "FSD v14.2+ Rollout",
+      description: "Smoother performance, outperforming competitors in real-world tests.",
+      date: "December 23, 2025",
+    },
+    {
+      title: "Optimus Factory Deployment",
+      description: "Thousands of humanoid robots active in factories. External sales planned for 2026.",
+      date: "December 2025",
+    },
+    {
+      title: "Energy Storage Records",
+      description: ">100% YoY growth in deployments, margins higher than automotive.",
+      date: "December 2025",
+    },
+    {
+      title: "TSLA Near All-Time Highs",
+      description: "Trading ~$485–490. Analysts targets $500–600+ on autonomy & robotics.",
+      date: "December 24, 2025",
+    },
   ];
 
   return (
-    <main className="min-h-screen bg-black text-white">
+    <main className="bg-black text-white">
       {/* Hero with Optimus */}
       <section className="relative h-screen w-full">
         <Image
           src="/optimus-hero.jpg"
-          alt="Optimus exiting Cybertruck"
+          alt="Optimus exiting Cybertruck – the future is here"
           fill
           priority
           className="object-cover brightness-50"
@@ -34,50 +53,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Live TSLA Chart - увеличенная высота */}
-      <section className="mx-auto max-w-7xl px-8 py-20">
-        <h2 className="mb-12 text-center text-4xl font-bold text-red-500 md:text-6xl">
+      {/* Live TSLA Chart – большой и адаптивный */}
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+        <h2 className="mb-10 text-center text-4xl font-bold text-red-500 md:text-6xl">
           TSLA Live Chart
         </h2>
-        <div className="h-screen md:h-[800px] w-full rounded-xl bg-gray-900 shadow-2xl overflow-hidden">
-          <div className="tradingview-widget-container h-full">
-            <div className="tradingview-widget-container__widget h-full"></div>
-            <Script
-              id="tradingview-widget-script"
-              src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js"
-              strategy="lazyOnload"
-            >
-              {`
-                {
-                  "width": "100%",
-                  "height": "100%",
-                  "symbol": "NASDAQ:TSLA",
-                  "interval": "D",
-                  "timezone": "Etc/UTC",
-                  "theme": "dark",
-                  "style": "1",
-                  "locale": "en",
-                  "toolbar_bg": "#f1f3f6",
-                  "enable_publishing": false,
-                  "allow_symbol_change": true,
-                  "container_id": "tradingview_chart"
-                }
-              `}
-            </Script>
-          </div>
+        <div className="w-full overflow-hidden rounded-2xl bg-gray-900 shadow-2xl" style={{ height: '600px' }}>
+          <iframe
+            src="https://www.tradingview.com/chart/?symbol=NASDAQ:TSLA&theme=dark"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
         </div>
       </section>
 
-      {/* News Feed */}
-      <section className="mx-auto max-w-6xl px-8 py-20 pb-32">
+      {/* Latest Bull Catalysts */}
+      <section className="mx-auto max-w-6xl px-4 pb-32 pt-16 md:px-8">
         <h2 className="mb-12 text-center text-4xl font-bold text-red-500 md:text-6xl">
           Latest Bull Catalysts
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {catalysts.map((item, i) => (
-            <div key={i} className="rounded-xl bg-gray-900 p-8 shadow-2xl hover:shadow-red-500/50 transition">
+            <div
+              key={i}
+              className="rounded-2xl bg-gray-900 p-8 shadow-xl transition hover:shadow-red-500/50"
+            >
               <h3 className="mb-4 text-2xl font-bold text-red-400">{item.title}</h3>
-              <p className="mb-4 text-lg">{item.description}</p>
+              <p className="mb-6 text-lg leading-relaxed">{item.description}</p>
               <p className="text-sm text-gray-400">{item.date}</p>
             </div>
           ))}
