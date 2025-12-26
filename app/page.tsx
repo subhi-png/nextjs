@@ -14,10 +14,37 @@
       display: flex;
       flex-direction: column;
     }
+    .header {
+      position: relative;
+      height: 55vh;
+      overflow: hidden;
+    }
     .header-image {
       width: 100%;
-      height: 45vh;
+      height: 100%;
       object-fit: cover;
+    }
+    .header-text {
+      position: absolute;
+      top: 20px;
+      left: 16px;
+      text-align: left;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: 900;
+      color: #e31937;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.8);
+    }
+    .subtitle {
+      font-size: 20px;
+      margin: 10px 0;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
+    }
+    .motto {
+      font-size: 24px;
+      margin-top: 20px;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.8);
     }
     .price-section {
       background: #111;
@@ -81,11 +108,6 @@
       font-size: 15px;
       line-height: 1.5;
     }
-    .post-image {
-      width: 100%;
-      border-radius: 10px;
-      margin-top: 10px;
-    }
     #input-area {
       padding: 10px 12px;
       background: #000;
@@ -121,8 +143,15 @@
   </style>
 </head>
 <body>
-  <!-- Мемная картинка Optimus "No FUD, Only Moon" -->
-  <img src="https://preview.redd.it/teslas-black-optimus-v2-walking-v0-4htkbuabgkyf1.jpeg?width=955&format=pjpg&auto=webp&s=d1077ce2ee520ab20020aef2f21f489694ae01ef" alt="No FUD, Only Moon" class="header-image">
+  <div class="header">
+    <!-- Твоя новая картинка — замени на свою, если есть точная ссылка -->
+    <img src="https://preview.redd.it/teslas-black-optimus-v2-walking-v0-4htkbuabgkyf1.jpeg?width=955&format=pjpg&auto=webp&s=d1077ce2ee520ab20020aef2f21f489694ae01ef" alt="TeslaBullFeed" class="header-image">
+    <div class="header-text">
+      <div class="title">TeslaBullFeed</div>
+      <div class="subtitle">Daily Dose of TSLA Bull Catalysts</div>
+      <div class="motto">🚀 No FUD, Only Moon 🌕</div>
+    </div>
+  </div>
 
   <div class="price-section">
     <div class="price-title">TSLA Live Price</div>
@@ -131,14 +160,14 @@
   </div>
 
   <div id="feed">
-    <!-- Примеры булл-постов -->
+    <!-- Примеры постов — потом заменим на реальные твиты -->
     <div class="post">
       <div class="post-header">
         <div class="avatar"></div>
         <div class="username">@elonmusk</div>
-        <div class="time">recently</div>
+        <div class="time">recent</div>
       </div>
-      <div class="post-text">Optimus will change everything. No FUD, only moon 🚀🌕</div>
+      <div class="post-text">Optimus production starting soon. This will be huge.</div>
     </div>
     <div class="post">
       <div class="post-header">
@@ -146,36 +175,29 @@
         <div class="username">@Tesla</div>
         <div class="time">today</div>
       </div>
-      <div class="post-text">Robotaxi unveiling soon. The future is autonomous.</div>
+      <div class="post-text">Robotaxi event coming in 2026. Stay tuned.</div>
     </div>
   </div>
 
   <div id="input-area">
-    <textarea id="message-input" placeholder="Share your Tesla thoughts..." rows="1"></textarea>
+    <textarea id="message-input" placeholder="Share your bull thesis..." rows="1"></textarea>
     <button id="send-btn">➤</button>
   </div>
 
   <script>
-    // Элементы для цены
     const priceEl = document.getElementById('price');
     const changeEl = document.getElementById('change');
 
-    // Функция обновления цены TSLA
     async function updateTSLAPrice() {
       try {
-        const response = await fetch('https://query1.finance.yahoo.com/v8/finance/chart/TSLA?interval=1m&range=1d', { 
-          cache: 'no-cache' 
-        });
+        const response = await fetch('https://query1.finance.yahoo.com/v8/finance/chart/TSLA?interval=1m&range=1d', { cache: 'no-cache' });
         const data = await response.json();
-
         const quote = data.chart.result[0].meta;
         const currentPrice = quote.regularMarketPrice.toFixed(2);
         const previousClose = quote.previousClose.toFixed(2);
         const changePercent = ((currentPrice - previousClose) / previousClose * 100).toFixed(2);
 
         priceEl.textContent = `$${currentPrice}`;
-
-        // Цвет и текст изменения
         if (changePercent > 0) {
           changeEl.className = 'price-change positive';
           changeEl.textContent = `+${changePercent}% (today)`;
@@ -188,17 +210,14 @@
         }
       } catch (error) {
         priceEl.textContent = '$---.--';
-        changeEl.textContent = 'Error loading price';
-        changeEl.className = 'price-change neutral';
-        console.error('Price update error:', error);
+        changeEl.textContent = 'Network error';
       }
     }
 
-    // Первичная загрузка и автообновление каждые 30 сек
     updateTSLAPrice();
     setInterval(updateTSLAPrice, 30000);
 
-    // Остальной код для постов (как раньше)
+    // Посты
     const feed = document.getElementById('feed');
     const input = document.getElementById('message-input');
     const sendBtn = document.getElementById('send-btn');
