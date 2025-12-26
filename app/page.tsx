@@ -34,13 +34,11 @@
     .price-value {
       font-size: 48px;
       font-weight: 800;
-      letter-spacing: 1px;
     }
     .price-change {
       font-size: 18px;
       margin-top: 8px;
     }
-    .positive { color: #0f0; }
     .negative { color: #f44; }
     #feed {
       flex: 1;
@@ -80,7 +78,6 @@
     .post-text {
       font-size: 15px;
       line-height: 1.5;
-      margin-bottom: 8px;
     }
     .post-image {
       width: 100%;
@@ -118,31 +115,45 @@
       border-radius: 50%;
       cursor: pointer;
       font-size: 20px;
-      flex-shrink: 0;
     }
   </style>
 </head>
 <body>
-  <!-- Replace with your Optimus image URL (the one with "No FUD, Only Moon") -->
-  <img src="YOUR_OPTIMUS_IMAGE_URL_HERE.jpg" alt="No FUD, Only Moon" class="header-image">
+  <!-- Картинка Optimus с мемом "No FUD, Only Moon" -->
+  <img src="https://preview.redd.it/teslas-black-optimus-v2-walking-v0-4htkbuabgkyf1.jpeg?width=955&format=pjpg&auto=webp&s=d1077ce2ee520ab20020aef2f21f489694ae01ef" alt="No FUD, Only Moon" class="header-image">
 
   <div class="price-section">
     <div class="price-title">TSLA Live Price</div>
-    <div class="price-value">$485.40</div>
-    <div class="price-change negative">-0.03% (today)</div>
+    <div class="price-value">$484.26</div>
+    <div class="price-change negative">Dec 26, 2025 (range: $476.80–$490.90)</div>
   </div>
 
   <div id="feed">
-    <!-- Example posts – add your own or integrate real feed later -->
+    <!-- Стартовые булл-посты для ленты -->
     <div class="post">
       <div class="post-header">
         <div class="avatar"></div>
         <div class="username">@elonmusk</div>
-        <div class="time">2h ago</div>
+        <div class="time">1h ago</div>
       </div>
-      <div class="post-text">Cybertruck production ramp is going extremely well. Deliveries accelerating!</div>
+      <div class="post-text">Optimus is coming. No FUD, only moon 🚀🌕</div>
     </div>
-    <!-- More posts here -->
+    <div class="post">
+      <div class="post-header">
+        <div class="avatar"></div>
+        <div class="username">@Tesla</div>
+        <div class="time">3h ago</div>
+      </div>
+      <div class="post-text">FSD v13 rolling out soon. Supervised to unsupervised in 2026!</div>
+    </div>
+    <div class="post">
+      <div class="post-header">
+        <div class="avatar"></div>
+        <div class="username">@WholeMarsBlog</div>
+        <div class="time">5h ago</div>
+      </div>
+      <div class="post-text">TSLA to $1000+ in 2026. Robotaxi + Optimus = game over for bears.</div>
+    </div>
   </div>
 
   <div id="input-area">
