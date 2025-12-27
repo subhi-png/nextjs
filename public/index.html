@@ -7,34 +7,97 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: system-ui, sans-serif; background: #000; color: white; min-height: 100vh; display: flex; flex-direction: column; }
-    .header { position: relative; height: 40vh; overflow: hidden; } /* Было 55vh → стало 40vh */
-    .header-image { width: 100%; height: 100%; object-fit: cover; }
-    .header-text { position: absolute; top: 16px; left: 16px; text-shadow: 2px 2px 8px #000; }
-    .title { font-size: 32px; font-weight: 900; color: #e31937; }
-    .subtitle { font-size: 18px; margin: 8px 0; }
-    .motto { font-size: 22px; margin-top: 16px; }
-    .price-section { background: #111; padding: 20px 16px; text-align: center; }
-    .price-title { color: #e31937; font-size: 26px; font-weight: 700; margin-bottom: 10px; }
-    .price-value { font-size: 44px; font-weight: 800; }
-    .price-change { font-size: 17px; margin-top: 8px; }
+    .hero {
+      display: flex;
+      align-items: center;
+      padding: 20px;
+      gap: 20px;
+      flex-wrap: wrap;
+      background: #000;
+    }
+    .hero-image {
+      flex: 1;
+      min-width: 280px;
+      max-width: 500px;
+      border-radius: 16px;
+      object-fit: cover;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.6);
+    }
+    .hero-text {
+      flex: 2;
+      min-width: 280px;
+    }
+    .title {
+      font-size: 36px;
+      font-weight: 900;
+      color: #e31937;
+    }
+    .subtitle {
+      font-size: 22px;
+      margin: 12px 0;
+    }
+    .motto {
+      font-size: 28px;
+      margin-top: 20px;
+    }
+    .price-section {
+      background: #111;
+      padding: 24px;
+      text-align: center;
+    }
+    .price-title {
+      color: #e31937;
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .price-value {
+      font-size: 48px;
+      font-weight: 800;
+    }
+    .price-change {
+      font-size: 18px;
+      margin-top: 8px;
+    }
     .positive { color: #0f0; }
     .negative { color: #f44; }
     .neutral { color: #aaa; }
-    #feed { flex: 1; overflow-y: auto; padding: 12px; display: flex; flex-direction: column; gap: 20px; }
-    .section-title { font-size: 26px; color: #e31937; text-align: center; margin: 10px 0; }
-    .timeline-wrapper { background: transparent; box-shadow: none; padding: 0; }
-    .news-item { background: #111; border-radius: 12px; padding: 14px; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
-    .news-title a { color: #e31937; text-decoration: none; font-size: 16px; font-weight: 600; }
-    .news-date { font-size: 12px; color: #aaa; margin-top: 8px; }
-    #input-area { padding: 10px 12px; background: #000; border-top: 1px solid #333; display: flex; gap: 10px; align-items: end; }
-    #message-input { flex: 1; padding: 12px 16px; background: #222; color: white; border: 1px solid #444; border-radius: 24px; font-size: 15px; resize: none; min-height: 44px; max-height: 120px; overflow-y: auto; }
-    #send-btn { background: #e31937; color: white; border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; font-size: 20px; }
+    #feed {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+    }
+    .section-title {
+      font-size: 26px;
+      color: #e31937;
+      text-align: center;
+      margin: 20px 0 10px;
+    }
+    .news-item {
+      background: #111;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .news-title a {
+      color: #e31937;
+      text-decoration: none;
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.4;
+    }
+    .news-date {
+      font-size: 13px;
+      color: #aaa;
+      margin-top: 8px;
+    }
   </style>
 </head>
 <body>
-  <div class="header">
-    <img src="optimus-hero.jpg" alt="No FUD, Only Moon" class="header-image">
-    <div class="header-text">
+  <div class="hero">
+    <img src="optimus-hero.jpg" alt="Optimus" class="hero-image">
+    <div class="hero-text">
       <div class="title">TeslaBullFeed</div>
       <div class="subtitle">Daily Dose of TSLA Bull Catalysts</div>
       <div class="motto">🚀 No FUD, Only Moon 🌕</div>
@@ -48,26 +111,12 @@
   </div>
 
   <div id="feed">
-    <div class="section-title">Tweets Feed</div>
-    <div class="timeline-wrapper">
-      <a class="twitter-timeline" data-theme="dark" data-height="600" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/elonmusk"></a>
-    </div>
-    <div class="timeline-wrapper">
-      <a class="twitter-timeline" data-theme="dark" data-height="600" data-chrome="noheader nofooter noborders transparent" href="https://twitter.com/Tesla"></a>
-    </div>
-
-    <div class="section-title">News Feed</div>
+    <div class="section-title">Bull News Feed</div>
     <div id="news-feed"></div>
   </div>
 
-  <div id="input-area">
-    <textarea id="message-input" placeholder="Share your bull thesis..." rows="1"></textarea>
-    <button id="send-btn">➤</button>
-  </div>
-
-  <script async src="https://platform.twitter.com/widgets.js"></script>
-
   <script>
+    // TSLA Price
     const priceEl = document.getElementById('price');
     const changeEl = document.getElementById('change');
 
@@ -94,21 +143,24 @@
     updateTSLAPrice();
     setInterval(updateTSLAPrice, 30000);
 
-    async function loadTeslaNews() {
+    // Bull News Feed (только позитивные/булл-новости)
+    async function loadBullNews() {
       const feed = document.getElementById('news-feed');
-      const rss = 'https://news.google.com/rss/search?q=Tesla+stock+OR+Optimus+OR+Robotaxi+OR+FSD&hl=en-US&gl=US&ceid=US:en';
-      const proxy = 'https://corsproxy.io/?' + encodeURIComponent(rss);
+      const query = 'Tesla (stock rise OR record deliveries OR Optimus OR Robotaxi OR FSD success OR Cybertruck ramp OR battery breakthrough OR Elon Musk Tesla)';
+      const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-US&gl=US&ceid=US:en`;
+      const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
 
       try {
-        const res = await fetch(proxy);
+        const res = await fetch(proxyUrl);
         const text = await res.text();
         const xml = new DOMParser().parseFromString(text, "text/xml");
         const items = xml.querySelectorAll("item");
+
         feed.innerHTML = '';
         let count = 0;
         items.forEach(item => {
-          if (count >= 10) return;
-          const title = item.querySelector("title")?.textContent.trim() || 'Tesla News';
+          if (count >= 15) return;
+          const title = item.querySelector("title")?.textContent.trim() || 'Tesla Bull News';
           const link = item.querySelector("link")?.textContent.trim() || '#';
           const date = item.querySelector("pubDate")?.textContent ? new Date(item.querySelector("pubDate").textContent).toLocaleDateString('en-GB') : 'Recent';
 
@@ -119,17 +171,11 @@
           count++;
         });
       } catch {
-        feed.innerHTML = '<div class="news-item" style="text-align:center;color:#aaa;">News unavailable</div>';
+        feed.innerHTML = '<div class="news-item" style="text-align:center;color:#aaa;">News loading...</div>';
       }
     }
 
-    loadTeslaNews();
-
-    const input = document.getElementById('message-input');
-    input.addEventListener('input', () => {
-      input.style.height = 'auto';
-      input.style.height = input.scrollHeight + 'px';
-    });
+    loadBullNews();
   </script>
 </body>
 </html>
