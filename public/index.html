@@ -11,16 +11,14 @@
       display: flex;
       align-items: center;
       padding: 20px;
-      gap: 20px;
+      gap: 30px;
       flex-wrap: wrap;
-      background: #000;
     }
     .hero-image {
       flex: 1;
       min-width: 280px;
-      max-width: 500px;
+      max-width: 480px;
       border-radius: 16px;
-      object-fit: cover;
       box-shadow: 0 4px 20px rgba(0,0,0,0.6);
     }
     .hero-text {
@@ -28,7 +26,7 @@
       min-width: 280px;
     }
     .title {
-      font-size: 36px;
+      font-size: 38px;
       font-weight: 900;
       color: #e31937;
     }
@@ -143,10 +141,10 @@
     updateTSLAPrice();
     setInterval(updateTSLAPrice, 30000);
 
-    // Bull News Feed (только позитивные/булл-новости)
+    // Bull News Feed (только позитивные новости)
     async function loadBullNews() {
       const feed = document.getElementById('news-feed');
-      const query = 'Tesla (stock rise OR record deliveries OR Optimus OR Robotaxi OR FSD success OR Cybertruck ramp OR battery breakthrough OR Elon Musk Tesla)';
+      const query = 'Tesla (stock rise OR Optimus OR Robotaxi OR FSD success OR Cybertruck ramp OR record deliveries OR battery breakthrough OR Elon Musk Tesla positive)';
       const rssUrl = `https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=en-US&gl=US&ceid=US:en`;
       const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
 
@@ -155,12 +153,11 @@
         const text = await res.text();
         const xml = new DOMParser().parseFromString(text, "text/xml");
         const items = xml.querySelectorAll("item");
-
         feed.innerHTML = '';
         let count = 0;
         items.forEach(item => {
           if (count >= 15) return;
-          const title = item.querySelector("title")?.textContent.trim() || 'Tesla Bull News';
+          const title = item.querySelector("title")?.textContent.trim() || 'Bull News';
           const link = item.querySelector("link")?.textContent.trim() || '#';
           const date = item.querySelector("pubDate")?.textContent ? new Date(item.querySelector("pubDate").textContent).toLocaleDateString('en-GB') : 'Recent';
 
