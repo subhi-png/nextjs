@@ -1,6 +1,6 @@
 # TeslaBullFeed
 
-Daily dose of positive TSLA catalysts for long-term investors.
+Daily ose of positive TSLA catalysts for long-term investors.
 
 - Hero with Optimus
 - Live price
