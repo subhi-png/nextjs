@@ -1,5 +1,5 @@
 import Image from 'next/image';
-
+ 
 export default function Home() {
   const currentPrice = "475.19";
   const priceChange = "-10.37 (-2.13%)";
