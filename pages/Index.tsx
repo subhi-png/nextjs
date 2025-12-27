@@ -1,8 +1,7 @@
-
 import Image from 'next/image';
 
 export default function Home() {
-  const currentPrice = "475.19"; // Можно позже сделать динамическим
+  const currentPrice = "475.19";
   const priceChange = "-10.37 (-2.13%)";
 
   const catalysts = [
@@ -35,7 +34,7 @@ export default function Home() {
 
   return (
     <main className="bg-black text-white min-h-screen">
-      {/* Hero with Optimus */}
+      {/* Hero */}
       <section className="relative h-screen w-full">
         <Image
           src="/optimus-hero.jpg"
