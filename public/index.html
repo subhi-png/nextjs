@@ -211,10 +211,10 @@
     updateTSLAPrice();
     setInterval(updateTSLAPrice, 30000);
 
-    // News Feed from Electrek (final fix for titles)
+    // News Feed from Teslarati (best Tesla news source)
     async function loadTeslaNews() {
       const newsFeed = document.getElementById('news-feed');
-      const rssUrl = 'https://electrek.co/feed/';
+      const rssUrl = 'https://www.teslarati.com/feed/';
       const proxyUrl = 'https://corsproxy.io/?' + encodeURIComponent(rssUrl);
 
       try {
@@ -228,9 +228,9 @@
         let count = 0;
         items.forEach(item => {
           if (count >= 10) return;
-          const title = item.getElementsByTagName("title")[0]?.textContent.trim() || 'Tesla News';
-          const link = item.getElementsByTagName("link")[0]?.textContent.trim() || '#';
-          const pubDate = item.getElementsByTagName("pubDate")[0]?.textContent.trim();
+          const title = item.querySelector("title")?.textContent.trim() || 'Tesla News';
+          const link = item.querySelector("link")?.textContent.trim() || '#';
+          const pubDate = item.querySelector("pubDate")?.textContent.trim();
           const date = pubDate ? new Date(pubDate).toLocaleDateString('en-GB') : 'Recent';
 
           const newsItem = document.createElement('div');
