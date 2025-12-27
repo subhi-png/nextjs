@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+
+     <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -70,41 +71,15 @@
     #feed {
       flex: 1;
       overflow-y: auto;
-      padding: 12px;
+      padding: 12px 0;
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 20px;
     }
-    .post {
-      background: #111;
-      border-radius: 12px;
-      padding: 14px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    }
-    .post-header {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
-      font-size: 14px;
-      color: #aaa;
-    }
-    .avatar {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: #333;
-    }
-    .username {
-      font-weight: 600;
-      color: white;
-    }
-    .time {
-      margin-left: auto;
-    }
-    .post-text {
-      font-size: 15px;
-      line-height: 1.5;
+    .timeline-wrapper {
+      background: transparent;
+      box-shadow: none;
+      padding: 0;
     }
     #input-area {
       padding: 10px 12px;
@@ -142,7 +117,6 @@
 </head>
 <body>
   <div class="header">
-    <!-- Замени на свою картинку, если есть точная ссылка, или оставь эту -->
     <img src="optimus-hero.jpg" alt="No FUD, Only Moon" class="header-image">
     <div class="header-text">
       <div class="title">TeslaBullFeed</div>
@@ -158,21 +132,26 @@
   </div>
 
   <div id="feed">
-    <div class="post">
-      <div class="post-header">
-        <div class="avatar"></div>
-        <div class="username">@elonmusk</div>
-        <div class="time">recent</div>
-      </div>
-      <div class="post-text">Optimus is coming. This will change everything.</div>
+    <!-- Лента @elonmusk -->
+    <div class="timeline-wrapper">
+      <a class="twitter-timeline"
+         data-theme="dark"
+         data-height="600"
+         data-chrome="noheader nofooter noborders transparent"
+         href="https://twitter.com/elonmusk?ref_src=twsrc%5Etfw">
+        Tweets by @elonmusk
+      </a>
     </div>
-    <div class="post">
-      <div class="post-header">
-        <div class="avatar"></div>
-        <div class="username">@Tesla</div>
-        <div class="time">today</div>
-      </div>
-      <div class="post-text">FSD v13 rolling out. The future is here.</div>
+
+    <!-- Лента @Tesla -->
+    <div class="timeline-wrapper">
+      <a class="twitter-timeline"
+         data-theme="dark"
+         data-height="600"
+         data-chrome="noheader nofooter noborders transparent"
+         href="https://twitter.com/Tesla?ref_src=twsrc%5Etfw">
+        Tweets by @Tesla
+      </a>
     </div>
   </div>
 
@@ -181,13 +160,16 @@
     <button id="send-btn">➤</button>
   </div>
 
+  <!-- Обязательный скрипт для загрузки всех embed-виджетов X -->
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+  <!-- Твой существующий скрипт для цены TSLA -->
   <script>
     const priceEl = document.getElementById('price');
     const changeEl = document.getElementById('change');
 
     async function updateTSLAPrice() {
       try {
-        // Используем CORS-proxy, чтобы избежать "Check network"
         const proxyUrl = 'https://api.allorigins.win/get?url=';
         const yahooUrl = 'https://query1.finance.yahoo.com/v8/finance/chart/TSLA?interval=1m&range=1d';
         const response = await fetch(proxyUrl + encodeURIComponent(yahooUrl));
@@ -213,43 +195,18 @@
       } catch (error) {
         priceEl.textContent = '$---.--';
         changeEl.textContent = 'No connection';
-        changeEl.className = 'price-change neutral';
       }
     }
 
-    // Первая загрузка и обновление каждые 30 сек
     updateTSLAPrice();
     setInterval(updateTSLAPrice, 30000);
 
-    // Лента постов и ввод
-    const feed = document.getElementById('feed');
+    // Авторесайз поля ввода
     const input = document.getElementById('message-input');
-
     input.addEventListener('input', () => {
       input.style.height = 'auto';
       input.style.height = input.scrollHeight + 'px';
     });
-
-    input.addEventListener('keydown', e => {
-      if (e.key === 'Enter' && !e.shiftKey) {
-        e.preventDefault();
-        const text = input.value.trim();
-        if (!text) return;
-        const newPost = document.createElement('div');
-        newPost.className = 'post';
-        newPost.innerHTML = `
-          <div class="post-header">
-            <div class="avatar"></div>
-            <div class="username">@you</div>
-            <div class="time">just now</div>
-          </div>
-          <div class="post-text">${text.replace(/\n/g, '<br>')}</div>
-        `;
-        feed.prepend(newPost);
-        input.value = '';
-        input.style.height = 'auto';
-      }
-    });
   </script>
 </body>
-</html>
+</html> 
