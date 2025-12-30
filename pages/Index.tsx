@@ -34,7 +34,6 @@ const catalysts = [
 export default function Home() {
   return (
     <main className="bg-black text-white min-h-screen">
-      {/* Hero */}
       <section className="relative h-screen w-full">
         <Image
           src="/optimus-hero.jpg"
@@ -56,7 +55,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Live Price */}
       <section className="bg-gray-900 py-16 text-center">
         <h2 className="mb-6 text-4xl font-bold text-red-500 md:text-6xl">
           TSLA Live Price
@@ -65,7 +63,6 @@ export default function Home() {
         <p className="mt-4 text-2xl text-red-400">{priceChange} (today)</p>
       </section>
 
-      {/* Bull News Feed */}
       <section className="mx-auto max-w-6xl px-8 py-20 pb-32">
         <h2 className="mb-12 text-center text-4xl font-bold text-red-500 md:text-6xl">
           Bull News Feed
@@ -74,7 +71,7 @@ export default function Home() {
           {catalysts.map((item, i) => (
             <div
               key={item.title + i}
-              className="rounded-2xl bg-gray-900 p-8 shadow-xl transition hover:shadow-red-500/50"
+              className="rounded-2xl bg-gray-900 p-8 shadow-xl hover:shadow-red-500/50 transition"
             >
               <h3 className="mb-4 text-2xl font-bold text-red-400">{item.title}</h3>
               <p className="mb-6 text-lg leading-relaxed">{item.description}</p>
