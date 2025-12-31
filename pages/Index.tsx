@@ -1,44 +1,41 @@
 import Image from 'next/image';
 
-const currentPrice = "475.19";
-const priceChange = "-10.37 (-2.13%)";
-
-const catalysts = [
-  {
-    title: "Robotaxi Unsupervised Scaling",
-    description: "Fleet expanding in Austin without safety drivers. Regulatory approvals advancing – trillion-dollar ride-hailing network closer than ever.",
-    date: "December 2025",
-  },
-  {
-    title: "FSD v14+ Excellence",
-    description: "End-to-end AI delivering smoother rides, outperforming rivals in real-world scenarios. China launch imminent.",
-    date: "December 2025",
-  },
-  {
-    title: "Optimus Factory Thousands",
-    description: "Humanoid robots actively working in Tesla plants. External sales targeted for 2026 – robotics revolution accelerating.",
-    date: "December 2025",
-  },
-  {
-    title: "Energy Storage Boom",
-    description: ">100% YoY deployment growth, margins beating automotive. Megapack demand surging globally.",
-    date: "December 2025",
-  },
-  {
-    title: "TSLA Bull Momentum",
-    description: "Trading ~$475–485 in buy zone. Analysts raising targets to $500–600+ on autonomy & robotics valuation unlock.",
-    date: "December 30, 2025",
-  },
-];
-
 export default function Home() {
+  const catalysts = [
+    {
+      title: "Driverless Robotaxi Expansion",
+      description: "Fully unsupervised rides scaling in Austin and new cities — trillion-dollar opportunity unlocking.",
+      date: "December 2025",
+    },
+    {
+      title: "FSD v14.2+ Rollout",
+      description: "Smoother performance, outperforming competitors in real-world tests.",
+      date: "December 23, 2025",
+    },
+    {
+      title: "Optimus Factory Deployment",
+      description: "Thousands of humanoid robots active in factories. External sales planned for 2026.",
+      date: "December 2025",
+    },
+    {
+      title: "Energy Storage Records",
+      description: ">100% YoY growth in deployments, margins higher than automotive.",
+      date: "December 2025",
+    },
+    {
+      title: "TSLA Near All-Time Highs",
+      description: "Trading ~$485–490. Analysts targets $500–600+ on autonomy & robotics.",
+      date: "December 24, 2025",
+    },
+  ];
+
   return (
-    <main className="bg-black text-white min-h-screen">
-      {/* Hero Section */}
+    <main className="bg-black text-white">
+      {/* Hero with Optimus */}
       <section className="relative h-screen w-full">
         <Image
           src="/optimus-hero.jpg"
-          alt="Optimus – the future of autonomy and robotics"
+          alt="Optimus exiting Cybertruck – the future is here"
           fill
           priority
           className="object-cover brightness-50"
@@ -56,39 +53,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Live Price Section */}
-      <section className="bg-gray-900 py-16 text-center">
-        <h2 className="mb-6 text-4xl font-bold text-red-500 md:text-6xl">
-          TSLA Live Price
+      {/* Live TSLA Chart – большой и адаптивный */}
+      <section className="mx-auto max-w-7xl px-4 py-16 md:px-8">
+        <h2 className="mb-10 text-center text-4xl font-bold text-red-500 md:text-6xl">
+          TSLA Live Chart
         </h2>
-        <div className="text-6xl font-bold md:text-8xl">
-          ${currentPrice}
+        <div className="w-full overflow-hidden rounded-2xl bg-gray-900 shadow-2xl" style={{ height: '600px' }}>
+          <iframe
+            src="https://www.tradingview.com/chart/?symbol=NASDAQ:TSLA&theme=dark"
+            width="100%"
+            height="100%"
+            frameBorder="0"
+            allowFullScreen
+          ></iframe>
         </div>
-        <p className="mt-4 text-2xl text-red-400">
-          {priceChange} (today)
-        </p>
       </section>
 
-      {/* Bull News Feed */}
-      <section className="mx-auto max-w-6xl px-8 py-20 pb-32">
+      {/* Latest Bull Catalysts */}
+      <section className="mx-auto max-w-6xl px-4 pb-32 pt-16 md:px-8">
         <h2 className="mb-12 text-center text-4xl font-bold text-red-500 md:text-6xl">
-          Bull News Feed
+          Latest Bull Catalysts
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {catalysts.map((item, index) => (
+          {catalysts.map((item, i) => (
             <div
-              key={index}
+              key={i}
               className="rounded-2xl bg-gray-900 p-8 shadow-xl transition hover:shadow-red-500/50"
             >
-              <h3 className="mb-4 text-2xl font-bold text-red-400">
-                {item.title}
-              </h3>
-              <p className="mb-6 text-lg leading-relaxed">
-                {item.description}
-              </p>
-              <p className="text-sm text-gray-400">
-                {item.date}
-              </p>
+              <h3 className="mb-4 text-2xl font-bold text-red-400">{item.title}</h3>
+              <p className="mb-6 text-lg leading-relaxed">{item.description}</p>
+              <p className="text-sm text-gray-400">{item.date}</p>
             </div>
           ))}
         </div>
