@@ -1,37 +1,37 @@
 import Image from 'next/image';
 
-const currentPrice = "475.19";
-const priceChange = "-10.37 (-2.13%)";
-
-const catalysts = [
-  {
-    title: "Robotaxi Unsupervised Scaling",
-    description: "Fleet expanding in Austin without safety drivers. Regulatory approvals advancing – trillion-dollar ride-hailing network closer than ever.",
-    date: "December 2025",
-  },
-  {
-    title: "FSD v14+ Excellence",
-    description: "End-to-end AI delivering smoother rides, outperforming rivals in real-world scenarios. China launch imminent.",
-    date: "December 2025",
-  },
-  {
-    title: "Optimus Factory Thousands",
-    description: "Humanoid robots actively working in Tesla plants. External sales targeted for 2026 – robotics revolution accelerating.",
-    date: "December 2025",
-  },
-  {
-    title: "Energy Storage Boom",
-    description: ">100% YoY deployment growth, margins beating automotive. Megapack demand surging globally.",
-    date: "December 2025",
-  },
-  {
-    title: "TSLA Bull Momentum",
-    description: "Trading ~$475–485 in buy zone. Analysts raising targets to $500–600+ on autonomy & robotics valuation unlock.",
-    date: "December 31, 2025",
-  },
-];
-
 export default function Home() {
+  const currentPrice = "475.19";
+  const priceChange = "-10.37 (-2.13%)";
+
+  const catalysts = [
+    {
+      title: "Robotaxi Unsupervised Scaling",
+      description: "Fleet expanding in Austin without safety drivers. Regulatory approvals advancing – trillion-dollar ride-hailing network closer than ever.",
+      date: "December 2025",
+    },
+    {
+      title: "FSD v14+ Excellence",
+      description: "End-to-end AI delivering smoother rides, outperforming rivals. China launch imminent.",
+      date: "December 2025",
+    },
+    {
+      title: "Optimus Factory Thousands",
+      description: "Humanoid robots actively working in Tesla plants. External sales targeted for 2026 – robotics revolution accelerating.",
+      date: "December 2025",
+    },
+    {
+      title: "Energy Storage Boom",
+      description: ">100% YoY deployment growth, margins beating automotive. Megapack demand surging globally.",
+      date: "December 2025",
+    },
+    {
+      title: "TSLA Bull Momentum",
+      description: "Trading ~$475–485 in buy zone. Analysts raising targets to $500–600+ on autonomy & robotics valuation unlock.",
+      date: "December 27, 2025",
+    },
+  ];
+
   return (
     <main className="bg-black text-white min-h-screen">
       {/* Hero */}
@@ -57,16 +57,18 @@ export default function Home() {
       </section>
 
       {/* Live Price */}
-      <section className="bg-gray-900 py-16 text-center">
-        <h2 className="mb-6 text-4xl font-bold text-red-500 md:text-6xl">
-          TSLA Live Price
-        </h2>
-        <div className="text-6xl font-bold md:text-8xl">
-          ${currentPrice}
+      <section className="bg-gray-900 py-16">
+        <div className="mx-auto max-w-4xl px-8 text-center">
+          <h2 className="mb-6 text-4xl font-bold text-red-500 md:text-6xl">
+            TSLA Live Price
+          </h2>
+          <div className="text-6xl font-bold md:text-8xl">
+            ${currentPrice}
+          </div>
+          <p className="mt-4 text-2xl text-red-400">
+            {priceChange} (today)
+          </p>
         </div>
-        <p className="mt-4 text-2xl text-red-400">
-          {priceChange} (today)
-        </p>
       </section>
 
       {/* Bull News Feed */}
@@ -75,9 +77,9 @@ export default function Home() {
           Bull News Feed
         </h2>
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {catalysts.map((item, index) => (
+          {catalysts.map((item, i) => (
             <div
-              key={index}
+              key={i}
               className="rounded-2xl bg-gray-900 p-8 shadow-xl transition hover:shadow-red-500/50"
             >
               <h3 className="mb-4 text-2xl font-bold text-red-400">
@@ -86,9 +88,7 @@ export default function Home() {
               <p className="mb-6 text-lg leading-relaxed">
                 {item.description}
               </p>
-              <p className="text-sm text-gray-400">
-                {item.date}
-              </p>
+              <p className="text-sm text-gray-400">{item.date}</p>
             </div>
           ))}
         </div>
